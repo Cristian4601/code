@@ -53,4 +53,5 @@ int MaxD (int N1, int N2)
 			}
 		}
 	}
+	return 0;
 }
