@@ -28,7 +28,7 @@ int main ()
 
 int MaxD (int N1, int N2)
 {
-	int Cont1, Cont2, Div1, Opc;
+	int Cont1, Cont2;
 	
 	for(Cont1=N1;Cont1>=1;Cont1--)
 	{
