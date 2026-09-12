@@ -13,7 +13,7 @@ int main() {
 
     string mayusculas = texto;
     string minusculas = texto;
-    
+
     for (i=0;i<mayusculas.length();i++) {
         mayusculas[i] = toupper(mayusculas[i]);
     }
