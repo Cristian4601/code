@@ -11,7 +11,6 @@ float numeroNormal() {
     u1 = (float)rand() / RAND_MAX;
     u2 = (float)rand() / RAND_MAX;
 
-    // Evitar log(0)
     if (u1 == 0)
         u1 = 0.0001;
 

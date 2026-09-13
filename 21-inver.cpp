@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-char* Inversa(int N, char C[]);  // ✅ Function pointer or return type
+char* Inversa(int N, char C[]);
 
 int main()
 {
