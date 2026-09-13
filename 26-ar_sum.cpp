@@ -8,8 +8,7 @@ int sumarArreglo(int arreglo[], int cantidad, int indice) {
         return 0;
     }
 
-    return arreglo[indice] +
-           sumarArreglo(arreglo, cantidad, indice + 1);
+    return arreglo[indice] + sumarArreglo(arreglo, cantidad, indice + 1);
 }
 
 int main() {
