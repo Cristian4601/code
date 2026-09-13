@@ -1,21 +1,17 @@
 #include<iostream>
 using namespace std;
+
+bool Pri(int);
 int main()
 {
-	int Num,Count,Count2=0;
+	int Num;
+	
 	cout<<"Dijite un numero: ";
 	cin>>Num;
 	
 	if (Num>0)
 	{
-		for(Count=1;Count<=Num;Count++)
-		{
-			if(Num%Count==0)
-			{
-				Count2+=1;
-			}
-		}
-		if(Count2==2)
+		if (Pri(Num)==true)
 		{
 			cout<<"Numero primo"<<endl;
 		}
@@ -26,6 +22,28 @@ int main()
 	}
 	else
 	{
-		cout<<"numero negativo"
+		cout<<"numero negativo";
 	}
+}
+
+bool Pri(int Num)
+{
+	int Count,Count2=0;
+	bool Rta=false;
+	for(Count=1;Count<=Num;Count++)
+	{
+		if(Num%Count==0)
+		{
+			Count2+=1;
+		}
+	}
+	if(Count2==2)
+	{
+		Rta=true;
+	}
+	else
+	{
+		Rta=false;	
+	}
+	return Rta;
 }
