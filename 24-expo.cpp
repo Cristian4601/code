@@ -1,3 +1,23 @@
+#include <iostream>
+using namespace std;
+
+float Potencia(float, int);
+
+int main()
+{
+    int Digi, Num1;
+
+    cout << "ingrese una base: ";
+    cin >> Digi;
+    cout << "ingrese un exponente: ";
+    cin >> Num1;
+
+    
+    cout << "la potencia es: " << Potencia(Digi, Num1) << endl;
+    
+    return 0;
+}
+
 float Potencia(float N1, int N2)
 {
 	int Cont, Lim;

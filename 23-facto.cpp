@@ -1,3 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int Facto(int ValA);
+
+int main()
+{
+    int Digi;
+
+    cout << "ingrese un numero: ";
+    cin >> Digi;
+
+    
+    cout << "el factorial es: " << Facto(Digi) << endl;
+    
+    return 0;
+}
 int Facto(int ValA)
 {
 	int ContFac;
@@ -6,6 +23,6 @@ int Facto(int ValA)
 	{
 		ValC*=ContFac;
 	}
-	cout<<"C "<<ValC<<endl;
+	//cout<<"C "<<ValC<<endl;
 	return ValC;
 }
