@@ -73,7 +73,7 @@ float calcularEx(float N1, int Term)
             return Rta;
         }
         Rta+=Potencia(N1,Cont)/ValF;
-        cout<<"-"<<Cont<<"- "<<Rta<<endl;
+        //cout<<"-"<<Cont<<"- "<<Rta<<endl;
     }
     return Rta;
 }
@@ -109,7 +109,7 @@ float Potencia(float N1, int N2)
 	{
 		RtaP=Pot;
 	}
-    cout<<"P "<<RtaP<<endl;
+    //cout<<"P "<<RtaP<<endl;
 	return RtaP;
 }
 
@@ -126,11 +126,20 @@ float Facto(int ValA)
 	{
 		ValC*=ContFac;
 	}
-	cout<<"F "<<ValC<<endl;
+	//cout<<"F "<<ValC<<endl;
 	return ValC;
 }
 
 float calcularError(float Real, float Desviado)
 {
-    return fabs(Real - Desviado);
+    float Rta;
+    Rta=Real - Desviado;
+    if (Rta<0.00001f)
+    {
+        return 0;
+    }
+    
+    //cout<<"-"<<Real<<"- "<<Desviado<<endl;
+    
+    return Rta;
 }
