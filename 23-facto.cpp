@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int Facto(int ValA);
+long Facto(int ValA);
 
 int main()
 {
@@ -15,13 +15,14 @@ int main()
     
     return 0;
 }
-int Facto(int ValA)
+long Facto(int ValA)
 {
 	int ContFac;
 	float ValC=1;
 	for (ContFac=1;ContFac<=ValA;ContFac++)
 	{
 		ValC*=ContFac;
+		cout<<"-"<<ContFac<<"- "<<ValC<<endl;
 	}
 	//cout<<"C "<<ValC<<endl;
 	return ValC;
