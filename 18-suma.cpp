@@ -1,36 +1,37 @@
 #include <iostream>
-#include <string.h>
 using namespace std;
 
-int Suma (char[]);
+int Suma (char[], int);
 int main() 
 { 
     char Fras[100]={};
+    int Lim;
 
     cout<<"Ingrese un numero: ";
     cin>>Fras;
-    //cout<<Fras<<endl;
+    cout<<"cuantos digiyos tiene?: ";
+    cin>>Lim;
 
    
 
-    cout<<"la suma de los caracteres son: "<<Suma(Fras)<<endl;
+    cout<<"la suma de los caracteres son: "<<Suma(Fras, Lim-1)<<endl;
 }
 
-int Suma (char Fras[])
+int Suma (char Fras[], int Lim)
 {
-    int Cont1, Num=0, Limt;
-
-    Limt=sizeof(Fras) / sizeof(Fras[0]);
-    //cout<<Limt<<endl;
-
-    for(Cont1=0;Cont1<=Limt;Cont1++)
+    int Rta;
+    if (Lim==-1)
     {
-        //cout<<Cont1<<endl;
-        //cout<<"Numero "<<(int)Fras[Cont1]-48<<endl;
-        if((int)Fras[Cont1]>=48 && (int)Fras[Cont1]<=58)
+        Rta=0;
+    }
+    else
+    {
+        //cout<<"num: "<<(int)Fras[Lim]-48<<endl;
+        if((int)Fras[Lim]>=48 && (int)Fras[Lim]<=57)
         {
-            Num+=(int)Fras[Cont1]-48;
+            cout<<"num: "<<(int)Fras[Lim]<<endl;
+            Rta=(int)Fras[Lim]-48+Suma (Fras, Lim-1);
         }
     }
-    return Num;
+    return Rta;
 }
