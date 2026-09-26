@@ -17,13 +17,12 @@ int main()
 }
 long Facto(int ValA)
 {
-	int ContFac;
-	float ValC=1;
-	for (ContFac=1;ContFac<=ValA;ContFac++)
+	if (ValA == 0)
 	{
-		ValC*=ContFac;
-		cout<<"-"<<ContFac<<"- "<<ValC<<endl;
+		return 1;
 	}
-	//cout<<"C "<<ValC<<endl;
-	return ValC;
+	else
+	{
+		return ValA * Facto(ValA - 1);
+	}	
 }

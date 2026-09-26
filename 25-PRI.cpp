@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-bool Pri(int);
+bool Pri(int, int);
 int main()
 {
 	int Num;
@@ -11,7 +11,7 @@ int main()
 	
 	if (Num>0)
 	{
-		if (Pri(Num)==true)
+		if (Pri(Num, Num-1)==true)
 		{
 			cout<<"Numero primo"<<endl;
 		}
@@ -26,24 +26,23 @@ int main()
 	}
 }
 
-bool Pri(int Num)
+bool Pri(int Num, int Paso)
 {
-	int Count,Count2=0;
 	bool Rta=false;
-	for(Count=1;Count<=Num;Count++)
-	{
-		if(Num%Count==0)
-		{
-			Count2+=1;
-		}
-	}
-	if(Count2==2)
+	if(Paso==1)
 	{
 		Rta=true;
 	}
 	else
 	{
-		Rta=false;	
+		if(Num%Paso!=0 && Pri(Num, Paso-1))
+		{
+			Rta=true;
+		}
+		else
+		{
+			Rta=false;
+		}
 	}
 	return Rta;
 }

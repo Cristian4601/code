@@ -20,7 +20,7 @@ int main()
 
 float Potencia(float N1, int N2)
 {
-	int Cont, Lim;
+	int Lim;
 	float Pot=1, RtaP;
 	
 	if (N2<0)
@@ -32,10 +32,15 @@ float Potencia(float N1, int N2)
 		Lim=N2;
 	}
 	
-	for(Cont=1;Cont<=Lim;Cont++)
+	if (Lim==0)
 	{
-		Pot*=N1;
+		Pot=1;
 	}
+	else
+	{
+		Pot=N1*Potencia(N1, Lim-1);
+	}
+	
 	if (N2<0)
 	{
 		RtaP=1/Pot;
