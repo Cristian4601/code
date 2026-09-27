@@ -10,9 +10,14 @@ int main()
     cout << "ingrese un numero: ";
     cin >> Digi;
 
-    
-    cout << "el factorial es: " << Facto(Digi) << endl;
-    
+    if (Digi < 0)
+	{
+		cout << "No se puede calcular el factorial de un numero negativo." << endl;
+	}
+	else
+	{
+		cout << "el factorial es: " << Facto(Digi) << endl;
+	}
     return 0;
 }
 long Facto(int ValA)

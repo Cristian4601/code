@@ -11,10 +11,14 @@ int main()
     cin>>Fras;
     cout<<"cuantos digiyos tiene?: ";
     cin>>Lim;
-
-   
-
-    cout<<"la suma de los caracteres son: "<<Suma(Fras, Lim-1)<<endl;
+    if(Lim>=0)
+    {
+        cout<<"la suma de los caracteres son: "<<Suma(Fras, Lim-1)<<endl;
+    }
+    else
+    {
+        cout<<"Error: el numero de digitos no es valido."<<endl;
+    }
 }
 
 int Suma (char Fras[], int Lim)
@@ -29,7 +33,7 @@ int Suma (char Fras[], int Lim)
         //cout<<"num: "<<(int)Fras[Lim]-48<<endl;
         if((int)Fras[Lim]>=48 && (int)Fras[Lim]<=57)
         {
-            cout<<"num: "<<(int)Fras[Lim]<<endl;
+            //cout<<"num: "<<(int)Fras[Lim]<<endl;
             Rta=(int)Fras[Lim]-48+Suma (Fras, Lim-1);
         }
     }
