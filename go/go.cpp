@@ -3,17 +3,20 @@ using namespace std;
 
 void Tabla (int[16][16]);
 
+bool ChTab(int[16][16], int[16][16]);
+
 bool Vpos (int[16][16], int, int, int);
+int CaptI[16][16](int[16][16], int, int, int);
 
 int main() 
 {
     bool Valid=true;
     char Point[3];
-    int Cont1 ,Cont2 , Turn, PonX=-1 ,PonY=-1, Tabl[16][16]=
+    int Cont1 ,Cont2 , Turn, PonY=-1 ,PonX=-1, Tabl[16][16]=
     {
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -38,7 +41,7 @@ int main()
         //turnos
         if(Cont1%2==0)
         {
-            Turn=2;
+            Turn=-1;
         }
         else
         {
@@ -52,33 +55,35 @@ int main()
             //pociociones
             for(Cont2=0;Cont2<3;Cont2++)
             {
-                if (Point[Cont2]>=65 && Point[Cont2]<=80 && PonY==-1)
+                if (Point[Cont2]>=65 && Point[Cont2]<=80 && PonX==-1)
                 {
-                    PonY=Point[Cont2]-65;
+                    PonX=Point[Cont2]-65;
                 }
-                else if (Point[Cont2]>=97 && Point[Cont2]<=112 && PonY==-1)
+                else if (Point[Cont2]>=97 && Point[Cont2]<=112 && PonX==-1)
                 {
-                    PonY=Point[Cont2]-97;
+                    PonX=Point[Cont2]-97;
                 }
             
-                if (Point[Cont2]>=48 && Point[Cont2]<=80 && Point[Cont2+1]>=48 && Point[Cont2+1]<=80 && PonX==-1)
+                if (Point[Cont2]>=48 && Point[Cont2]<=80 && Point[Cont2+1]>=48 && Point[Cont2+1]<=80 && PonY==-1)
                 {
-                    PonX=(Point[Cont2]-48)*10+Point[Cont2+1]-49;
+                    PonY=(Point[Cont2]-48)*10+Point[Cont2+1]-49;
                     //cout<<"1)  "<<PonX<<endl;
                 }
-                else if(Point[Cont2]>=48 && Point[Cont2]<=80 && PonX==-1)
+                else if(Point[Cont2]>=48 && Point[Cont2]<=80 && PonY==-1)
                 {
-                    PonX=Point[Cont2]-49;
+                    PonY=Point[Cont2]-49;
                     //cout<<Point[Cont2]<<"2)  "<<PonX<<endl;
                 }
             
             }
             cout<<PonY<<"  "<<PonX<<endl;
 
+            Tabl=CaptI(Tabl, PonY, PonX, Turn);
+
             //esritura
-            if(Vpos (Tabl, PonX, PonY, Turn) && PonX<16 && PonX!=-1 && PonY!=-1)
+            if(Vpos (Tabl, PonY, PonX, Turn) && PonY<16 && PonY!=-1 && PonX!=-1)
             {
-                Tabl[PonX][PonY]=Turn;
+                Tabl[PonY][PonX]=Turn;
                 Valid=false;
             }
             else
@@ -86,8 +91,8 @@ int main()
                 cout<<"POCICION INVALIDA"<<endl;
                 Valid=true;
             }
-            PonX=-1;
             PonY=-1;
+            PonX=-1;
         }
         Valid=true;
 
@@ -126,7 +131,7 @@ void Tabla (int N1[16][16])
                 cout<<" -- O"; 
                 break;
 
-            case 2:
+            case -1:
                 cout<<" -- @";
                 break;
             }
@@ -136,26 +141,51 @@ void Tabla (int N1[16][16])
     
 }
 
-bool Vpos (int tab[16][16], int Px, int Py, int Tn)
+bool ChTab(int N1[16][16], int N2[16][16])
+{
+    int Indice1, Indice2;
+    bool rta=true;
+
+
+    for (Indice1=0;Indice1<16;Indice1++)
+    {
+        for (Indice2=0;Indice2<16;Indice2++)
+        {
+            if (N1[Indice1][Indice2] != N2[Indice1][Indice2])
+            {
+                rta=true;
+                break;
+            }
+            
+        }
+        if(!rta)
+        {
+            break;
+        }
+    }
+    return rta;                              
+}
+
+bool Vpos (int Tab[16][16], int Py, int Px, int Tn)
 {
     bool rta=false;
     int Liber=0;
 
-    if(tab[Px][Py]==0)
+    if(Tab[Py][Px]==0)
     {
-        if((tab[Px-1][Py]==0 || tab[Px-1][Py]==Tn) && Py!=0)
+        if((Tab[Py-1][Px]==0 || Tab[Py-1][Px]==Tn) && Px!=0)
         {
             Liber+=1;
         }
-        if((tab[Px][Py-1]==0 || tab[Px][Py-1]==Tn) && Py!=0)
+        if((Tab[Py][Px-1]==0 || Tab[Py][Px-1]==Tn) && Px!=0)
         {
             Liber+=1;
         }
-        if((tab[Px+1][Py]==0 || tab[Px+1][Py]==Tn) && Px!=15)
+        if((Tab[Py+1][Px]==0 || Tab[Py+1][Px]==Tn) && Py!=15)
         {
             Liber+=1;
         }
-        if((tab[Px][Py+1]==0 || tab[Px][Py+1]==Tn) && Py!=15)
+        if((Tab[Py][Px+1]==0 || Tab[Py][Px+1]==Tn) && Px!=15)
         {
             Liber+=1;
         }
@@ -169,4 +199,42 @@ bool Vpos (int tab[16][16], int Px, int Py, int Tn)
     }
 
     return rta;
+}
+
+int CaptI[16][16](int Tab[16][16], int Py, int Px, int Tn)
+{
+    bool fin=false, libre;
+    int Min, Max, Cont;
+    if(Tab[Py][Px-1]==Tn*-1)
+    {
+        Max=Px-1;
+        cout<<" ----"<<Py-1<<endl;
+
+        for (Cont=Max;!fin;Cont--)
+        {
+            if(Tab[Py][Px-Cont]==Tn*-1)
+            {
+                Min=Px-Cont;
+            }
+            else if (Tab[Py][Px-Cont]==Tn)
+            {
+                //revicion pendiente
+
+                fin=true;
+                libre=false;
+            }
+            else
+            {
+                fin=true;
+                libre=true;
+            }
+            
+        }
+        fin=false;
+    }
+    
+
+
+
+    return Tab;
 }
